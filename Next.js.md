@@ -131,3 +131,5 @@ export default function ClientProjectsById() {
 ```
 ### Custom 404 page
 na pasta page, basta criar um arquivo de nome `404.js`
+
+## Styling
