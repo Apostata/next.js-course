@@ -1,6 +1,7 @@
 import EventItem from "./EventItem";
 import Styles from "./EventList.module.css";
-export default function EventList({ items }) {
+import { EventModel } from "./types";
+export default function EventList({ items }: { items: EventModel[] }) {
   return (
     <ul className={Styles.list}>
       {items.map((item) => (

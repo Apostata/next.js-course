@@ -133,3 +133,32 @@ export default function ClientProjectsById() {
 na pasta page, basta criar um arquivo de nome `404.js`
 
 ## Styling
+nada de novo, usa css modules até então
+
+## Adicionando layout ao app
+o arquivo `_app.js` que fica na pasta `pages` é o arquivo que trata as rotas através de suas props, seria o equivalente ao `BrowserRouter` do `react-router`. só que as rotas no next são definidas pelos demais arquivos na pasta `pages`
+
+para adicionar um layout envolvendo cada rota, basta envolve-lo com o layout:
+
+```tsx
+import { AppProps } from "next/app";
+import Layout from "../components/layout/layout";
+import "../styles/globals.css";
+
+function MyApp({ Component, pageProps }: AppProps) {
+  return (
+    <Layout>
+      <Component {...pageProps} />
+    </Layout>
+  );
+}
+
+export default MyApp;
+```
+
+## Pre-render
+### static generation
+Gera em tempo de compilação uma versão estática do site para que os mecanismos de busca fiquem felizes, podem ser armazenadas no cache.
+O cliente ou o robo ao entrar no site ve uma versão estática, já com conteúdo antes mesmo de o react entrar em ação no browser. Só então o next itilizará a técnica de `Hydrade` que é após o carregamento inicial do conteúdo estático, ele irá re-renderizar o site com a versão SPA e a partir dai o React assume
+
+### sercer side rendering
